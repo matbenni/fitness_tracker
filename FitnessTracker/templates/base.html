@@ -12,6 +12,19 @@
         <a href="/">Home</a> |
         <a href="/about">About</a> |
         <a href="/accounts/profile">Profile</a>
+        {% if user.is_authenticated %}
+            Signed in as {{user.email}}
+            {% comment %}
+            <!-- <form class="logout" action="{% url 'main_url_app:logout_user' %}" method="post">
+                {% csrf_token %}
+                <button class=""logout-button" aria-label="Log Out" title="Log Out Button">Log Out</button>
+            </form> -->
+            {% endcomment %}
+            <a href="/accounts/logout">Logout</a>
+        {% else %}
+            <a href="/sign-up">Sign up</a> |
+            <a href="/log-in">Log In</a>
+        {% endif %}
     </nav>
     <main>
         {% block content %}
