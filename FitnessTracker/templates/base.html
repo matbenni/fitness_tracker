@@ -8,10 +8,15 @@
     <link rel="stylesheet" href="{%static 'css/style.css' %}">
 </head>
 <body>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
     <nav>
         <a href="/">Home</a> |
         <a href="/about">About</a> |
-        <a href="/accounts/profile">Profile</a>
+        <a href="/accounts/profile">Profile</a> |
         {% if user.is_authenticated %}
             Signed in as {{user.email}}
             {% comment %}
@@ -20,10 +25,10 @@
                 <button class=""logout-button" aria-label="Log Out" title="Log Out Button">Log Out</button>
             </form> -->
             {% endcomment %}
-            <a href="/accounts/logout">Logout</a>
+            <a href="/accounts/logout">Logout</a> |
         {% else %}
-            <a href="/sign-up">Sign up</a> |
-            <a href="/log-in">Log In</a>
+            <a href="/accounts/signup">Sign up</a> |
+            <a href="/accounts/login">Log In</a> |
         {% endif %}
     </nav>
     <main>

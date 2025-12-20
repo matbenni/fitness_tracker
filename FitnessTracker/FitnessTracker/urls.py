@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from workout import views as workout_views
 from users import views as users_views
+from users.views import CustomSignupView
 
 app_name = "main_url_app"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
     path('accounts/', include("allauth.urls")),
     path('accounts/profile/', workout_views.profile, name="profile"),
     path('accounts/logout/', users_views.logout_user, name="logout_user"),

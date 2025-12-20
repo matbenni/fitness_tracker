@@ -155,7 +155,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+ACCOUNT_SIGNUP_FORM_CLASS = 'FitnessTracker.forms.CustomSignupForm'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
