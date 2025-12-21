@@ -10,9 +10,9 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     phone = models.CharField(max_length=15, null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    height_feet = models.IntegerField(max_length=2, null=True, blank=True)
-    height_inches = models.IntegerField(max_length=2, null=True, blank=True)
-    weight_lbs = models.IntegerField(max_length=3, null=True, blank=True)
+    height_feet = models.IntegerField(null=True, blank=True)
+    height_inches = models.IntegerField(null=True, blank=True)
+    weight_lbs = models.IntegerField(null=True, blank=True)
     email_verified_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
