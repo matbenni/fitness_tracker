@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     'workout',
-    "exercises",
     "users",
 
 ]
