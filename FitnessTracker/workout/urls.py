@@ -4,6 +4,8 @@ from . import views
 app_name = "workout_url_app"
 
 urlpatterns = [
-    path('', views.home, name="home"),
+    path('', views.new_workout, name="new_workout"),
+    path('my-workouts/', views.my_workouts, name="my_workouts"),
+    path('my-exercises/', views.my_exercises, name="my_exercises"),
     # path('about/', views.about, name="about"),
 ]
