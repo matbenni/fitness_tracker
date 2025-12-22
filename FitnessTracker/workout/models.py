@@ -40,7 +40,7 @@ class Exercises(models.Model):
         distance = "Distance"
         time = "Time"
 
-    name = models.CharField(max_length=25)
+    name = models.CharField(max_length=95)
     description = models.TextField(null=True, blank=True)
     default_unit = models.CharField(choices=Units, default=Units.lbs)
     equipment = models.ForeignKey(Equipment, on_delete=models.SET_NULL, null=True, blank=True)
