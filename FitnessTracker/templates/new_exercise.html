@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+
+{% block content %}
+<h1>Logged in as {{ request.user.email }}</h1>
+<h1>New Exercise</h1>
+<form action="" method="post">
+{% csrf_token %}
+
+<div>
+    {{ form.name.label }}
+</div>
+<div>
+    {{ form.name }}
+</div>
+<div>
+    {{ form.description.label }}
+</div>
+<div>
+    {{ form.description }}
+</div>
+
+
+<input type="submit" value="Create">
+
+</form>
+{% endblock %}

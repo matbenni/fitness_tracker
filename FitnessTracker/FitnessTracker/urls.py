@@ -24,6 +24,7 @@ app_name = "main_url_app"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', workout_views.home, name='home'),
     path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
     path('accounts/', include("allauth.urls")),
     path('accounts/profile/', workout_views.profile, name="profile"),

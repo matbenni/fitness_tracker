@@ -4,7 +4,7 @@ from django.conf import settings
 # Create your models here.
 # If you don't define a primary key field in your model, Django automatically adds a field named id
 class Equipment(models.Model):
-    equipment_name = models.CharField(max_length=50, null=False, blank=False)
+    equipment_name = models.CharField(max_length=50, null=False, blank=False, unique=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="admin")
     date_added = models.DateField(auto_now_add=True)
     last_updated_date = models.DateField(auto_now_add=True)
@@ -14,7 +14,7 @@ class Equipment(models.Model):
         return self.equipment_name
 
 class MuscleGroups(models.Model):
-    muscle_group_name = models.CharField(max_length=20, null=False, blank=False)
+    muscle_group_name = models.CharField(max_length=20, null=False, blank=False, unique=True)
 
     def __str__(self):
         return self.muscle_group_name
@@ -40,7 +40,7 @@ class Exercises(models.Model):
         distance = "Distance"
         time = "Time"
 
-    name = models.CharField(max_length=95)
+    name = models.CharField(max_length=95, unique=True)
     description = models.TextField(null=True, blank=True)
     default_unit = models.CharField(choices=Units, default=Units.lbs)
     equipment = models.ForeignKey(Equipment, on_delete=models.SET_NULL, null=True, blank=True)
