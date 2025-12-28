@@ -7,12 +7,11 @@ Profile
 
 
 {% block content %}
-<h1>Logged in as {{ request.user.email }}</h1>
 <h1>My Exercises</h1>
 <select name="exercise_values" id="exercise_values_id">
 <option selected disabled hidden>Select an Exercise</option>
 {% for exercise_value in exercise_list %}
-<option>{{ exercise_value }} | {{ exercise_value.default_unit }}</option>
+<option>{{ exercise_value }} | {{ exercise_value.default_unit }} | {{ exercise_value.author }}</option>
 {% endfor %}
 </select>
 <h1><a href="/workout/new-exercise/">Create New Exercise</a></h1>

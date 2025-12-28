@@ -7,26 +7,20 @@ Profile
 
 
 {% block content %}
-<h1>Logged in as {{ request.user.email }}</h1>
 <h1>New Exercise</h1>
-<form action="" method="post">
+<form action="" method="post" class="form-with-validation">
 {% csrf_token %}
 
-<div>
-    {{ form.name.label }}
-</div>
-<div>
-    {{ form.name }}
-</div>
-<div>
-    {{ form.description.label }}
-</div>
-<div>
-    {{ form.description }}
-</div>
-
-
-<input type="submit" value="Create">
+{% for field in form %}
+    <div>
+        {{ field.label }}
+    </div>
+    <div>
+        {{ field }}
+    </div>
+{% endfor %}
+<button class="form-submit">Create Exercise</button>
+<button class="form-submit" onclick="window.history.back()">Cancel</button>
 
 </form>
 {% endblock %}

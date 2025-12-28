@@ -30,7 +30,8 @@ class CustomSignupForm(forms.Form):
 class ExerciseForm(forms.ModelForm):
     class Meta:
         model = Exercises
-        fields = '__all__'
+        # fields = '__all__'
+        exclude = ['author',]
 
     name = forms.CharField(widget=forms.TextInput(attrs={"size": 50, "placeholder": "Exercise Name"}))
     description = forms.CharField(widget=forms.Textarea(attrs={"rows":3}))

@@ -1,14 +1,28 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 nav {
     background-color: gray;
     color: white;
     font-size: 2.5rem;
 }
 
-.field-name-style {
-    width: 100%;
+.field-item-label {
+    margin-bottom: 10px;
+}
+
+.form-with-validation {
+    max-width: 600px;
+    font-size: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+}
+
+.form-submit {
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 125px;
+}
+
+.field-item-input {
+    margin-bottom: 20px;
 }

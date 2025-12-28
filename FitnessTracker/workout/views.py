@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from workout.models import Exercises, MuscleGroups, Equipment
 from FitnessTracker.forms import ExerciseForm
+from users.models import UserProfile
+from django.contrib.auth.models import User
+from django.db.models.functions import Lower
 
 # Create your views here.
 def home(request):
@@ -20,7 +23,9 @@ def my_exercises(request):
     context = {}
     
     muscle_groups = MuscleGroups.objects.all()
-    exercise_list = Exercises.objects.all().order_by("name")
+    admin_user = User.objects.filter(username="admin").values_list('username', flat=True)
+    current_user = request.user.username
+    exercise_list = Exercises.objects.filter(author__username__in=[admin_user, current_user]).order_by(Lower("name"))
 
     context['muscle_groups'] = muscle_groups
     context['exercise_list'] = exercise_list
@@ -30,7 +35,16 @@ def my_exercises(request):
 def new_exercise(request):
 
     context = {}
-    form = ExerciseForm()
+
+    if request.method == "POST":
+        form = ExerciseForm(request.POST)
+        if form.is_valid():
+            new_exercise = form.save(commit=False)
+            new_exercise.author = request.user
+            new_exercise.save()
+            return redirect("workout_url_app:my_exercises")
+    else:
+        form = ExerciseForm()
 
     context['form'] = form
 
