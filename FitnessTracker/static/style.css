@@ -8,6 +8,10 @@ nav {
     margin-bottom: 10px;
 }
 
+.field-item-input {
+    margin-bottom: 20px;
+}
+
 .form-with-validation {
     max-width: 600px;
     font-size: 1rem;
@@ -23,6 +27,53 @@ nav {
     width: 125px;
 }
 
-.field-item-input {
-    margin-bottom: 20px;
+.exercise-list-accordion {
+    list-style: none;
+    padding: 0;
+    width: 600px;
+}
+
+.exercise-list-accordion li {
+    padding: 1px;
+}
+
+.exercise-list-checkbox {
+    display: none;
+}
+
+label::before{
+    content: '+';
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.exercise-list-title {
+    padding: 10px;
+    margin: 0;
+    border-top: 1px solid #36454F;
+    background: #899499;
+    cursor: pointer;
+    display: block;
+}
+
+.exercise-list-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.exercise-list-content li {
+    margin: 10px;
+}
+
+.exercise-list-checkbox:checked + .exercise-list-title + .exercise-list-content {
+    max-height: 1000px;
+}
+
+.exercise-list-checkbox:checked + label::before {
+    content: '-';
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 600;
 }

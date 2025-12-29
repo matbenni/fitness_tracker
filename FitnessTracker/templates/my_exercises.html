@@ -15,4 +15,29 @@ Profile
 {% endfor %}
 </select>
 <h1><a href="/workout/new-exercise/">Create New Exercise</a></h1>
+
+<ul class="exercise-list-accordion">
+    {% for muscle_group in muscle_groups %}
+        <li>
+            <input type="checkbox" class="exercise-list-checkbox" id="list-input-{{ forloop.counter }}">
+            {% if forloop.counter == 1 %}
+                <label for="list-input-{{ forloop.counter }}" class="exercise-list-title">{{ muscle_group }} (Click to Expand)</label>
+            {% else %}
+                <label for="list-input-{{ forloop.counter }}" class="exercise-list-title">{{ muscle_group }}</label>
+            {% endif %}
+            <div class="exercise-list-content">
+                {% for exercise_value in exercise_list %}
+                    {% for muscle_group_value in exercise_value.muscle_group.all %}
+                        {% if muscle_group_value == muscle_group %}
+                        <div>
+                            {{ exercise_value }}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+
 {% endblock %}

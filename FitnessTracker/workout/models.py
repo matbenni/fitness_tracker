@@ -45,7 +45,7 @@ class Exercises(models.Model):
     default_unit = models.CharField(choices=Units, default=Units.lbs)
     equipment = models.ForeignKey(Equipment, on_delete=models.SET_NULL, null=True, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default="admin")
-    muscle_group = models.ForeignKey(MuscleGroups, on_delete=models.CASCADE)
+    muscle_group = models.ManyToManyField(MuscleGroups)
     exercise_type = models.CharField(choices=Type, default=Type.weight_and_reps)
 
     def __str__(self):
