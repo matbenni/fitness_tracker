@@ -27,7 +27,7 @@ nav {
     width: 125px;
 }
 
-.exercise-list-accordion {
+/* .exercise-list-accordion {
     list-style: none;
     padding: 0;
     width: 600px;
@@ -76,4 +76,23 @@ label::before{
     margin-right: 10px;
     font-size: 24px;
     font-weight: 600;
+} */
+
+summary {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+summary::after {
+    content: url(images/arrow_chevron_down.svg);
+    margin-left: .75em;
+    transition: 0.2s;
+}
+
+details[open] summary::after {
+    transform: rotate(180deg);
 }

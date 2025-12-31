@@ -16,6 +16,24 @@ Profile
 </select>
 <h1><a href="/workout/new-exercise/">Create New Exercise</a></h1>
 
+
+{% for muscle_group in muscle_groups %}
+    <details>
+        <summary>{{ muscle_group }}</summary>
+        {% for exercise_value in exercise_list %}
+            {% for muscle_group_value in exercise_value.muscle_group.all %}
+                {% if muscle_group_value == muscle_group %}
+                    <div>
+                        {{ exercise_value }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </details>
+{% endfor %}
+
+
+{% comment %}
 <ul class="exercise-list-accordion">
     {% for muscle_group in muscle_groups %}
         <li>
@@ -39,5 +57,6 @@ Profile
         </li>
     {% endfor %}
 </ul>
+{% endcomment %}
 
 {% endblock %}
