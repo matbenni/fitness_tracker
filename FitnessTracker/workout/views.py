@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from workout.models import Exercises, MuscleGroups, Equipment
-from FitnessTracker.forms import ExerciseForm
+from FitnessTracker.forms import ExerciseForm, WorkoutForm
 from users.models import UserProfile
 from django.contrib.auth.models import User
 from django.db.models.functions import Lower
@@ -13,7 +13,23 @@ def profile(request):
     return render(request, "profile.html")
 
 def new_workout(request):
-    return render(request, "new_workout.html")
+    context = {}
+    current_workout_context = {}
+
+    if request.method == "POST":
+        form = WorkoutForm(request.POST)
+        if form.is_valid():            
+            new_workout = form.save(commit=False)
+            new_workout.save()
+            current_workout_context['workout_id'] = new_workout.id
+            return render(request, "current_workout.html", current_workout_context)
+            # return redirect("workout_url_app:current_workout") # Should be new-workout/<workout-id>/ for the url
+    else:
+        form = WorkoutForm()
+
+    context['form'] = form
+
+    return render(request, "new_workout.html", context)
 
 def my_workouts(request):
     return render(request, "my_workouts.html")

@@ -1,6 +1,6 @@
 from django import forms
 from users.models import UserProfile
-from workout.models import Exercises
+from workout.models import Exercises, WorkoutSession
 
 # This CustomSignupForm edits the django-allauth signup form by adding fields for your custom user model
 class CustomSignupForm(forms.Form):
@@ -39,4 +39,9 @@ class ExerciseForm(forms.ModelForm):
     # def __init(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
     #     self.fields['name'].widget.attrs.update({'class': 'field-name-style'})
+
+class WorkoutForm(forms.ModelForm):
+    class Meta:
+        model = WorkoutSession
+        fields = '__all__'
     
