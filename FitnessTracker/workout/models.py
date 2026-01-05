@@ -72,6 +72,4 @@ class WorkoutSets(models.Model):
     distance_mi = models.DecimalField(decimal_places=2, max_digits=5, default=0, null=True, blank=True)
     distance_km = models.DecimalField(decimal_places=2, max_digits=5, default=0, null=True, blank=True)
     time_minutes = models.DecimalField(decimal_places=2, max_digits=5, default=0, null=True, blank=True)
-    time_seconds = models.DecimalField(decimal_places=2, max_digits=5, default=0, null=True, blank=True)
-
-    
+    time_seconds = models.DecimalField(decimal_places=2, max_digits=5, default=0, null=True, blank=True)   
