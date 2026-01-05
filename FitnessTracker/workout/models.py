@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from datetime import timedelta
 
 # Create your models here.
 # If you don't define a primary key field in your model, Django automatically adds a field named id
@@ -65,5 +66,12 @@ class WorkoutSets(models.Model):
     workout_session = models.ForeignKey(WorkoutSession, on_delete=models.CASCADE)
     is_supserset = models.BinaryField(null=True, blank=True)
     exercise_value = models.ForeignKey(Exercises, on_delete=models.CASCADE)
+    weight_lb = models.DecimalField(decimal_places=2, max_digits=5, default=0, null=True, blank=True)
+    weight_kg = models.DecimalField(decimal_places=2, max_digits=5, default=0, null=True, blank=True)
+    reps = models.IntegerField(default=0, null=True, blank=True)
+    distance_mi = models.DecimalField(decimal_places=2, max_digits=5, default=0, null=True, blank=True)
+    distance_km = models.DecimalField(decimal_places=2, max_digits=5, default=0, null=True, blank=True)
+    time_minutes = models.DecimalField(decimal_places=2, max_digits=5, default=0, null=True, blank=True)
+    time_seconds = models.DecimalField(decimal_places=2, max_digits=5, default=0, null=True, blank=True)
 
     

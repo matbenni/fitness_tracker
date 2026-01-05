@@ -21,8 +21,8 @@ def new_workout(request):
         if form.is_valid():            
             new_workout = form.save(commit=False)
             new_workout.save()
-            current_workout_context['workout_id'] = new_workout.id
-            return render(request, "current_workout.html", current_workout_context)
+            current_workout_context['new_workout_record'] = new_workout
+            return render(request, "workout_session.html", current_workout_context)
             # return redirect("workout_url_app:current_workout") # Should be new-workout/<workout-id>/ for the url
     else:
         form = WorkoutForm()
